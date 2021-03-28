@@ -1,0 +1,87 @@
+﻿<Window x:Class="Formulář_s_validací.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Formulář_s_validací"
+        mc:Ignorable="d"
+        Title="Employee form" Height="600" Width="800"
+        MaxHeight="1500" MaxWidth="900" MinHeight="600" MinWidth="600">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF2C3636" Offset="0"/>
+            <GradientStop Color="#FFE1FFFF" Offset="1"/>
+            <GradientStop Color="#FF4F7A7A" Offset="0.392"/>
+            <GradientStop Color="#FF7FA6A6" Offset="0.588"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Jméno:" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="20" Foreground="#FF1F1E1E"/>
+        <Label Content="Přijmení:" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="20" Foreground="#FF1F1E1E"/>
+        <Label Content="Rok narození:" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="20" Foreground="#FF1F1E1E"/>
+        <Label Content="Vzdělání:" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="20" Foreground="#FF1F1E1E"/>
+        <Label Content="Pracovní pozice:" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="20" Foreground="#FF1F1E1E"/>
+        <Label Content="Hrubý plat:" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="20" Foreground="#FF1F1E1E"/>
+
+        <TextBox x:Name="NameBox" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Height="33" FontSize="20" FontFamily="Arial" LostFocus="NameBox_LostFocus"/>
+        <TextBox x:Name="LastNameBox" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Height="33" FontSize="20" FontFamily="Arial" LostFocus="LastNameBox_LostFocus"/>
+        <TextBox x:Name="BirthYearBox" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" Height="33" FontSize="20" FontFamily="Arial" LostFocus="BirthYearBox_LostFocus"/>
+        <ComboBox x:Name="EducationBox" Grid.Row="7" Grid.Column="2" VerticalAlignment="Center" Height="33" FontSize="20" FontFamily="Arial" LostFocus="EducationBox_LostFocus">
+            <ComboBoxItem Content="Základní vzdělání"/>
+            <ComboBoxItem Content="Střední vzdělání s výučním listem"/>
+            <ComboBoxItem Content="Střední vzdělání s maturitní zkouškou"/>
+            <ComboBoxItem Content="Vyšší odborné vzdělání"/>
+            <ComboBoxItem Content="Vysokoškolské vzdělání - bakalářský stupeň"/>
+            <ComboBoxItem Content="Vysokoškolské vzdělání - magisterský stupeň"/>
+            <ComboBoxItem Content="Vysokoškolské vzdělání - doktorský stupeň"/>
+        </ComboBox>
+        <TextBox x:Name="JobBox" Grid.Row="9" Grid.Column="2" VerticalAlignment="Center" Height="33" FontSize="20" FontFamily="Arial" LostFocus="JobBox_LostFocus"/>
+        <TextBox x:Name="CashBox" Grid.Row="11" Grid.Column="2" VerticalAlignment="Center" Height="33" FontSize="20" FontFamily="Arial" LostFocus="CashBox_LostFocus"/>
+        <Button Content="Přihlásit" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan ="2" Margin="10" Click="Button_Click" FontFamily="Arial Black" FontSize="30" Foreground="#FF272727" >
+            <Button.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.OpacityMask>
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF3C9B78" Offset="1"/>
+                    <GradientStop Color="#FF74F1C4"/>
+                    <GradientStop Color="#FF5DA88D" Offset="0.704"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <Label Visibility="Hidden" x:Name="NameAlert" Content="*" Grid.Row="1" Grid.Column="3" Foreground="Red" FontSize="22" FontFamily="Showcard Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Visibility="Hidden" x:Name="LastNameAlert" Content="*" Grid.Row="3" Grid.Column="3" Foreground="Red" FontSize="22" FontFamily="Showcard Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Visibility="Hidden" x:Name="YearAlert" Content="*" Grid.Row="5" Grid.Column="3" Foreground="Red" FontSize="22" FontFamily="Showcard Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Visibility="Hidden" x:Name="EducationAlert" Content="*" Grid.Row="7" Grid.Column="3" Foreground="Red" FontSize="22" FontFamily="Showcard Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Visibility="Hidden" x:Name="JobAlert" Content="*" Grid.Row="9" Grid.Column="3" Foreground="Red" FontSize="22" FontFamily="Showcard Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Visibility="Hidden" x:Name="CashAlert" Content="*" Grid.Row="11" Grid.Column="3" Foreground="Red" FontSize="22" FontFamily="Showcard Gothic" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
